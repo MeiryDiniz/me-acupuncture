@@ -21,5 +21,6 @@ from django.urls import path, include
 urlpatterns = [
     # path('schedule/', index_views.index, name='index'),
     path("", include("schedule.urls"), name="schedule-urls"),
+    path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]

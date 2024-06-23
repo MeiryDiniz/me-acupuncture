@@ -8,7 +8,9 @@ from .models import Review
 class ReviewList(generic.ListView):
     # model = Review
     queryset = Review.objects.all()
-    template_name = "review_list.html"
+    template_name = "schedule/index.html"
+    paginate_by = 6
+    # template_name = "review_list.html"
 
 
 # def index(request):
