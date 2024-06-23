@@ -3,10 +3,11 @@
 {% block content %}
 
 <!-- index.html content starts here -->
+ <h3>Patient's Reviews</h3>
 <div class="container-fluid">
     <div class="row">
 
-        <!-- Blog Entries Column -->
+        <!-- Patient's Reviews Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for review in object_list %}
@@ -16,39 +17,25 @@
                             <div class="image-container">
                                 <div>
                                     <p>{{ review.body}}</p>
-                                </div>
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ review.author }}</p>
-                                </div>
-                            </div>
-                            <!-- <a href="#" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
-                            </a> -->
-
-                            <hr />
+                                </div>                                
+                            </div>  
+                            <hr>
+                            <p class="card-text text-muted h6">By: {{ review.author }}</p>                             
                             <p class="card-text text-muted h6">{{ review.created_on}}
                             </p>
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+                
+                <!-- {% if forloop.counter|divisibleby:3 %} -->
             </div>
             <div class="row">
-                {% endif %}
+                <!-- {% endif %} -->
                 {% endfor %}
 
             </div>
         </div>
-    </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
+    </div>    
 </div>
 
 <!-- index.html content ends here -->

@@ -7,10 +7,12 @@ from .models import Review
 
 class ReviewList(generic.ListView):
     # model = Review
-    queryset = Review.objects.all()
+    queryset = Review.objects.all().order_by("-created_on")[:3]
     template_name = "schedule/index.html"
-    paginate_by = 6
+    # paginate_by = 6
     # template_name = "review_list.html"
+
+
 
 
 # def index(request):
