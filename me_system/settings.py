@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-meirydiniz-meacupunctur-qttmv8qkw5d.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-meirydiniz-meacupunctur-qttmv8qkw5d.ws.codeinstitute-ide.net', 'me-acupuncture-booking-1cfe972308c4.herokuapp.com']
 
 
 # Application definition
