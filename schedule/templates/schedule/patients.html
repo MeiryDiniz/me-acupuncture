@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Welcome, {{ user.username }}</h1>
+<!-- Creating New Comments -->
+<div class="col-md-4 card mb-4 mt-3">
+    <div class="card-body">
+        {% if user.is_authenticated %}
+        <h3>Leave a Review:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form id="reviewForm" method="post" style="margin-top: 1.3em;">
+            {{ form | crispy }}
+            {% csrf_token %}
+            <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+        </form>
+        {% else %}
+        <p>Log in to leave a review</p>
+        {% endif %}
+    </div>
+    <!-- Displaying count of comments -->
+    <div class="row">
+        <div class="col-12">
+            <strong class="text-secondary">
+                <i class="far fa-comments" style="color: #74C0FC;"></i> {{ review_count }}
+            </strong>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+    <!-- Displaying Comments -->
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Reviews:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags
+          to iterate through each comment in comments -->
+                {% for review in reviews %}
+                <div class="p-2 comments
+          {% if not review.approved and review.author == user %}
+          faded{% elif not review.approved %} d-none{% endif %}">
+                    <p class="font-weight-bold">
+                        {{ review.author }}
+                        <span class="font-weight-normal">
+                            {{ review.created_on }}
+                        </span> wrote:
+                    </p>
+                    <div id="comment{{ comment.id }}">
+                        {{ review.body | linebreaks }}
+                    </div>
+                    {% if not comment.approved and review.author == user %}
+                    <p class="approval">
+                        This comment is awaiting approval
+                    </p>
+                    {% endif %}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- {% if form %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %} -->
+
+{% endblock %}

@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-*^^tnp5c^2_@r#v-tq)#q0c&u7^x8g77humeijg!^^#ntkdhzj
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-meirydiniz-meacupunctur-qttmv8qkw5d.ws.codeinstitute-ide.net', 'me-acupuncture-booking-1cfe972308c4.herokuapp.com']
 
@@ -49,12 +49,17 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'schedule',
 ]
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
